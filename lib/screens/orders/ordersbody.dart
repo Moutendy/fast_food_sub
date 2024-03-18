@@ -63,7 +63,7 @@ class _OrderBody extends State<OrderBody> {
                     "Attendez que votre commande soit prise en charge"),
                 ConfirmationFastFood(),
                 ContainterPending("En cours de traitement..."),
-                delivered(),
+                deliveredanimation(),
               ]))
         ],
       ),

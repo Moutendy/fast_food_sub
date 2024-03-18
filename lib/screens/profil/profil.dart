@@ -18,7 +18,7 @@ class _Profil extends State<Profil> {
     // TODO: implement build
     var user = null;
     return DefaultTabController(
-        length: 3,
+        length: 4,
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: backgroundColor,

@@ -5,11 +5,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intro_screen_onboarding_flutter/introscreenonboarding.dart';
+import 'package:lottie/lottie.dart';
 import 'package:subsafood/screens/commandes/commandeproduit.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:subsafood/widgetscreens/constant.dart';
 import 'package:subsafood/widgetscreens/formulaire.dart';
+import 'package:subsafood/widgetscreens/icons.dart';
 
 Widget profil(File _imageFile, Function onPressed) {
   return Container(
@@ -234,12 +236,8 @@ ConfirmationFastFood() {
         height: 10,
       ),
       Center(
-        child: FaIcon(
-          FontAwesomeIcons
-              .checkCircle, // Utilisez l'icône de validation de FontAwesome
-          size: 120.0,
-          color: Colors.green, // Couleur de l'icône
-        ),
+        child: // Load a Lottie file from your assets
+            Lottie.asset('images/livreur/valid.json'),
       )
     ],
   );
@@ -250,5 +248,142 @@ delivered() {
     foregroundColor: Colors.green,
     introductionList: list,
     onTapSkipButton: () {},
+  );
+}
+
+final List<String> daysOfWeek = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
+horaireFastFood() {
+  return Container(
+      child: ListView.builder(
+          itemCount: daysOfWeek.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: Text(
+                daysOfWeek[index],
+                style: TextStyle(fontSize: 18.0),
+              ),
+              
+            );
+          }));
+}
+
+produitForProfil(
+    var user,
+    File? _imageFile,
+    TextEditingController textEditingController,
+    TextEditingController telEditingController) {
+  return Container(
+    child: ListView(
+      children: [
+        SizedBox(height: 25),
+        Center(
+          child: Container(
+            height: 80,
+            width: 80,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black54, //New
+                      blurRadius: 10.0,
+                      offset: Offset(0, 10))
+                ],
+                image: _imageFile == null
+                    ? user != null
+                        ? DecorationImage(
+                            image: NetworkImage(''), fit: BoxFit.cover)
+                        : DecorationImage(
+                            image: AssetImage('images/icon.png'),
+                            fit: BoxFit.cover)
+                    : DecorationImage(
+                        image: FileImage(_imageFile ?? File('')),
+                        fit: BoxFit.cover),
+                color: black54),
+          ),
+        ),
+        SizedBox(height: 15),
+        field("Nom Produit", false, textEditingController, "message"),
+        SizedBox(height: 10),
+        field("Description Produit", false, textEditingController, "message"),
+        SizedBox(height: 10),
+        fieldNumeric("Prix", false, telEditingController, "message"),
+        SizedBox(height: 10),
+        button("Ajouter", () {}),
+        SizedBox(height: 10),
+        button("Ajouter", () {}),
+        SizedBox(height: 10),
+        button("Ajouter", () {}),
+        SizedBox(height: 10),
+        fieldNumeric("Prix", false, telEditingController, "message"),
+      ],
+    ),
+  );
+}
+
+deliveredanimation() {
+  return ListView(
+    children: [
+      // Load a Lottie file from your assets
+      Lottie.asset('images/livreur/moto.json'),
+      SizedBox(
+        height: 12,
+      ),
+      Center(
+        child: Text(
+          "Le livreur est sur le chemin...",
+          style: TextStyle(
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ),
+      // Load a Lottie file from a remote url
+      // Lottie.network(
+      //     'https://raw.githubusercontent.com/xvrh/lottie-flutter/master/example/assets/Mobilo/A.json'),
+      Center(
+        child: Text(
+          "Il sera là dans 15 minutes",
+          style: TextStyle(
+              color: Colors.green, fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      )
+    ],
+  );
+}
+
+formulairescroll(TextEditingController textEditingController,
+    TextEditingController telEditingController) {
+  return SingleChildScrollView(
+    child: Center(
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 20),
+          field("Ville", false, telEditingController, "message"),
+          SizedBox(height: 10),
+          fieldNumeric("Description", false, telEditingController, "message"),
+          SizedBox(height: 20),
+          button("Ajouter", () {}),
+        ],
+      ),
+    ),
+  );
+}
+
+deliveredHeadLoging() {
+  return ListView(
+    children: [
+      // Load a Lottie file from your assets
+      Lottie.asset('images/livreur/moto.json'),
+
+      // Load a Lottie file from a remote url
+      // Lottie.network(
+      //     'https://raw.githubusercontent.com/xvrh/lottie-flutter/master/example/assets/Mobilo/A.json'),
+    ],
   );
 }

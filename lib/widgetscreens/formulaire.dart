@@ -1,10 +1,13 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
 import 'package:subsafood/widgetscreens/constant.dart';
+import 'package:subsafood/widgetscreens/icons.dart';
 
 Widget button(String name, Function onPressed) {
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+    padding: EdgeInsets.symmetric(horizontal: 25.0),
     child: Container(
       decoration:
           BoxDecoration(color: deep, borderRadius: BorderRadius.circular(12)),
@@ -84,6 +87,24 @@ Widget alerte(String text, Color color) {
           style: TextStyle(fontSize: 18, color: Colors.white),
         )
       ]),
+    ),
+  );
+}
+
+Widget fieldMenu(String name, double s) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+    child: Container(
+      decoration: BoxDecoration(
+          color: Colors.grey[200],
+          border: Border.all(color: Colors.white),
+          borderRadius: BorderRadius.circular(10)),
+      child: Padding(
+        padding: EdgeInsets.only(left: 0.0),
+        child: Center(
+          child: title(name, s),
+        ),
+      ),
     ),
   );
 }

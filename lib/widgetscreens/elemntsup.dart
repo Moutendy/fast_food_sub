@@ -26,7 +26,7 @@ Widget messageLink(String name, String nameLink) {
     children: [
       Text(
         name,
-        style: TextStyle(fontWeight: FontWeight.bold),
+        style: TextStyle(fontWeight: FontWeight.normal),
       ),
       SizedBox(
         width: 1.2,
@@ -65,5 +65,21 @@ Widget desc(String desc) {
       fontWeight: FontWeight.w600,
     ),
     textAlign: TextAlign.center,
+  );
+}
+
+pageView() {
+  return PageView(
+    children: const <Widget>[
+      Center(
+        child: Text("Page 1"),
+      ),
+      Center(
+        child: Text("Page 2"),
+      ),
+      Center(
+        child: Text("Page 3"),
+      )
+    ],  
   );
 }

@@ -1,9 +1,17 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:subsafood/screens/auth/login.dart';
+import 'package:subsafood/screens/commandes/detailcommande.dart';
+import 'package:subsafood/screens/livreur/livreur.dart';
+import 'package:subsafood/screens/produit/produit.dart';
+import 'package:subsafood/screens/profil/editprofil.dart';
 import 'package:subsafood/widgetscreens/card.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
+import 'package:subsafood/widgetscreens/elemntsup.dart';
 import 'package:subsafood/widgetscreens/formulaire.dart';
+
+import '../horaire/horaire.dart';
 
 class STabBar extends StatelessWidget {
   STabBar({Key? key}) : super(key: key);
@@ -14,9 +22,8 @@ class STabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     var user = null;
     return Padding(
-      padding: EdgeInsets.only(top: 3),
-      child: Column(
-        children: [
+        padding: EdgeInsets.only(top: 3),
+        child: Column(children: [
           Container(
             height: 150,
             width: 150,
@@ -76,119 +83,71 @@ class STabBar extends StatelessWidget {
               ],
             ),
           ),
-          Center(
-            child: TabBar(
-                isScrollable: true,
-                labelStyle: TextStyle(fontSize: 15),
-                tabs: [
-                  Tab(
-                    text: "My Profil",
-                  ),
-                  Tab(
-                    text: "Order",
-                  ),
-                  Tab(
-                    text: "Ajout Produit",
-                  ),
-                  Tab(
-                    text: "Horaires",
-                  ),
-                  Tab(
-                    text: "Statut",
-                  ),
-                ]),
+          SizedBox(
+            height: 15,
           ),
-          Flexible(
-              flex: 1,
-              child: TabBarView(children: [
-                Container(
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Container(
-                          height: 80,
-                          width: 80,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black54, //New
-                                    blurRadius: 10.0,
-                                    offset: Offset(0, 10))
-                              ],
-                              image: _imageFile == null
-                                  ? user != null
-                                      ? DecorationImage(
-                                          image: NetworkImage(''),
-                                          fit: BoxFit.cover)
-                                      : DecorationImage(
-                                          image: AssetImage('images/icon.png'),
-                                          fit: BoxFit.cover)
-                                  : DecorationImage(
-                                      image: FileImage(_imageFile ?? File('')),
-                                      fit: BoxFit.cover),
-                              color: black54),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      field("Email", false, textEditingController, "message"),
-                      SizedBox(height: 10),
-                      fieldNumeric(
-                          "Tel", false, telEditingController, "message"),
-                      SizedBox(height: 10),
-                      button("Edit", () {}),
-                    ],
-                  ),
-                ),
-                ContainterFastFood(context, 4),
-                Container(
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Container(
-                          height: 80,
-                          width: 80,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black54, //New
-                                    blurRadius: 10.0,
-                                    offset: Offset(0, 10))
-                              ],
-                              image: _imageFile == null
-                                  ? user != null
-                                      ? DecorationImage(
-                                          image: NetworkImage(''),
-                                          fit: BoxFit.cover)
-                                      : DecorationImage(
-                                          image: AssetImage('images/icon.png'),
-                                          fit: BoxFit.cover)
-                                  : DecorationImage(
-                                      image: FileImage(_imageFile ?? File('')),
-                                      fit: BoxFit.cover),
-                              color: black54),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      field("Nom Produit", false, textEditingController,
-                          "message"),
-                      SizedBox(height: 10),
-                      field("Description Produit", false, textEditingController,
-                          "message"),
-                      SizedBox(height: 10),
-                      fieldNumeric(
-                          "Prix", false, telEditingController, "message"),
-                      SizedBox(height: 10),
-                      button("Ajouter", () {}),
-                    ],
-                  ),
-                )
-              ]))
-        ],
-      ),
-    );
+          Center(
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Login()));
+              },
+              child: fieldMenu("Deconnexion", 15),
+            ),
+          ),
+          SizedBox(
+            height: 100,
+          ),
+          Center(
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => EditeProfil()));
+              },
+              child: fieldMenu("Edit Profil", 20),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Center(
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Horaire()));
+              },
+              child: fieldMenu("Horaire", 20),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Center(
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Produit()));
+              },
+              child: fieldMenu("Ajouter Produit", 20),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Center(
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Livreur()));
+              },
+              child: fieldMenu("Ajouter Livreur", 20),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+        ]));
   }
+
+  reduceSize() {}
 }
