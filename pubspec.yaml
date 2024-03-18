@@ -39,6 +39,9 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   font_awesome_flutter: ^10.7.0
   intro_screen_onboarding_flutter: ^1.0.0
+  lottie: ^3.1.0
+  google_fonts: 6.1.0
+  
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +70,9 @@ flutter:
     - images/
     - images/livreur/l.png
     - images/livreur/chro.png
+    - images/livreur/moto.json
+    - images/livreur/valid.json
+    - images/livreur/login.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
