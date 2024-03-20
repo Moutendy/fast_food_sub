@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subsafood/screens/profil/profil.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
+import 'package:subsafood/widgetscreens/formulaire.dart';
 
 Widget dialogue(String title, String desc) {
   return Center(
@@ -42,9 +43,13 @@ Widget messageLink(String name, String nameLink) {
 PreferredSizeWidget appBar(
     BuildContext context, String title, String profil, Profil profilScreen) {
   return AppBar(
-      backgroundColor: backgroundColor,
-      title: Text(title),
-      leading: GestureDetector(
+    backgroundColor: backgroundColor,
+    actions: [
+      Text(title),
+      SizedBox(
+        width: 15,
+      ),
+      GestureDetector(
         onTap: () {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => profilScreen));
@@ -52,7 +57,12 @@ PreferredSizeWidget appBar(
         child: CircleAvatar(
           backgroundImage: AssetImage(profil),
         ),
-      ));
+      ),
+      SizedBox(
+        width: 15,
+      )
+    ],
+  );
 }
 
 Widget desc(String desc) {
@@ -80,6 +90,19 @@ pageView() {
       Center(
         child: Text("Page 3"),
       )
-    ],  
+    ],
+  );
+}
+
+Widget buildCenteredInkWell(
+    BuildContext context, String text, Widget destinationWidget) {
+  return Center(
+    child: InkWell(
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => destinationWidget));
+      },
+      child: fieldMenu(text, 20),
+    ),
   );
 }

@@ -6,6 +6,7 @@ import 'package:subsafood/screens/auth/login.dart';
 import 'package:subsafood/screens/orders/orders.dart';
 import 'package:subsafood/screens/profil/profil.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
+import 'package:subsafood/widgetscreens/formulaire.dart';
 
 class CommandeProduit extends StatefulWidget {
   int id;
@@ -28,7 +29,7 @@ class _CommandeProduit extends State<CommandeProduit> {
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
           SizedBox(
-            width: 5,
+            width: 15,
           ),
           InkWell(
               onTap: () {
@@ -37,7 +38,10 @@ class _CommandeProduit extends State<CommandeProduit> {
               },
               child: CircleAvatar(
                 backgroundImage: AssetImage("images/3.jpg"),
-              ))
+              )),
+          SizedBox(
+            width: 15,
+          ),
         ],
       ),
       backgroundColor: backgroundColor,
@@ -118,6 +122,8 @@ class _CommandeProduit extends State<CommandeProduit> {
                   height: 15,
                 ),
                 Text(
+                    maxLines: 5, // Limite le texte à une seule ligne
+                    overflow: TextOverflow.ellipsis,
                     'Prémière puissance de l’UEMOA, la Côte d’Ivoire est un pays riche pour sa culture, ses icones au football mais aussi pour sa gastronomie . Plusieurs de ces plats ivoiriens ont avec le temps pu se faire une bonne réputation qui va au delà des frontières ivoiriennes : le garba , l’alloco etc . A ces deux plats, nous avons ajouté d’autres recettes pour vous faire decouvrir dans cet article le top 12 des meilleurs plats ivoiriens à tester absolument. Ce classement est le nôtre et la liste pourrait ne pas être exhaustive.'),
                 SizedBox(
                   height: 15,
@@ -125,14 +131,14 @@ class _CommandeProduit extends State<CommandeProduit> {
                 Center(
                   child: Row(
                     children: [
-                      InkWell(
-                        onTap: () {},
-                        child: const Icon(Icons.location_on, size: 25),
-                      ),
-                      Text("Localisation"),
-                      SizedBox(
-                        width: 10,
-                      ),
+                      // InkWell(
+                      //   onTap: () {},
+                      //   child: const Icon(Icons.location_on, size: 25),
+                      // ),
+                      // Text("Localisation"),
+                      // SizedBox(
+                      //   width: 10,
+                      // ),
                       Text(
                         "Prix:100 dh",
                         style: TextStyle(
@@ -145,18 +151,10 @@ class _CommandeProduit extends State<CommandeProduit> {
                         width: 10,
                       ),
                       Container(
-                        child: Text("valider la commande"),
-                      ),
-                      InkWell(
-                        onTap: () {
+                        child: button("Acheter", () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => Orders()));
-                        },
-                        child: Icon(
-                          CupertinoIcons.cart_badge_plus,
-                          size: 25,
-                          color: black54,
-                        ),
+                        }),
                       ),
                     ],
                   ),

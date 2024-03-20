@@ -111,11 +111,11 @@ ContainterFastFood(BuildContext context, int id) {
     children: [
       for (int i = id; i < 7; i++)
         Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+          padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
+          margin: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Color(0xFF232227),
+              color: Color.fromARGB(255, 250, 250, 250),
               boxShadow: [
                 BoxShadow(
                     color: Colors.black.withOpacity(0.4),
@@ -125,39 +125,38 @@ ContainterFastFood(BuildContext context, int id) {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.all(10),
-                child: Image.asset("images/$i.jpg",
-                    width: 200, height: 140, fit: BoxFit.cover),
+                margin: EdgeInsets.all(1),
+                child: Image.asset(
+                  "images/$i.jpg",
+                  width: 200,
+                  height: 170,
+                  fit: BoxFit.cover,
+                ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 8),
+                padding: EdgeInsets.only(bottom: 2),
                 child: Container(
                   alignment: Alignment.bottomLeft,
                   child: Text(
                     "Cheese Burger",
                     style: TextStyle(
                         fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: white),
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black),
                   ),
                 ),
               ),
-              Container(
-                alignment: Alignment.bottomLeft,
-                child: Text("Hot Burger",
-                    style: TextStyle(fontSize: 10, color: white)),
-              ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.symmetric(vertical: 2),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      "dh $i",
+                      "323$i,234 dh",
                       style: TextStyle(
                           fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black),
                     ),
                     InkWell(
                         onTap: () {
@@ -169,7 +168,7 @@ ContainterFastFood(BuildContext context, int id) {
                         child: Icon(
                           CupertinoIcons.cart_badge_plus,
                           size: 25,
-                          color: Colors.white,
+                          color: Colors.black,
                         ))
                   ],
                 ),
@@ -270,7 +269,6 @@ horaireFastFood() {
                 daysOfWeek[index],
                 style: TextStyle(fontSize: 18.0),
               ),
-              
             );
           }));
 }

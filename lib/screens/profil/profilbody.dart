@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:subsafood/screens/auth/login.dart';
 import 'package:subsafood/screens/commandes/detailcommande.dart';
 import 'package:subsafood/screens/livreur/livreur.dart';
+import 'package:subsafood/screens/orders/commandeencours.dart';
 import 'package:subsafood/screens/produit/produit.dart';
+import 'package:subsafood/screens/produit/produitList.dart';
 import 'package:subsafood/screens/profil/editprofil.dart';
 import 'package:subsafood/widgetscreens/card.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
@@ -98,54 +100,30 @@ class STabBar extends StatelessWidget {
           SizedBox(
             height: 100,
           ),
-          Center(
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => EditeProfil()));
-              },
-              child: fieldMenu("Edit Profil", 20),
-            ),
-          ),
+          buildCenteredInkWell(context, "Edit Profil", Horaire()),
           SizedBox(
             height: 15,
           ),
-          Center(
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Horaire()));
-              },
-              child: fieldMenu("Horaire", 20),
-            ),
-          ),
+          buildCenteredInkWell(context, "Horaire", Horaire()),
           SizedBox(
             height: 15,
           ),
-          Center(
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Produit()));
-              },
-              child: fieldMenu("Ajouter Produit", 20),
-            ),
-          ),
+          buildCenteredInkWell(context, "Ajouter Livreur", Produit()),
           SizedBox(
             height: 15,
           ),
-          Center(
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Livreur()));
-              },
-              child: fieldMenu("Ajouter Livreur", 20),
-            ),
-          ),
+          buildCenteredInkWell(context, "Ajouter Livreur", Livreur()),
           SizedBox(
             height: 15,
           ),
+          // buildCenteredInkWell(context, "Ordder Livreur", Livreur()),
+          SizedBox(
+            height: 15,
+          ),
+          buildCenteredInkWell(context, "Produits", ProduitList()),
+
+          buildCenteredInkWell(
+              context, "Commande en cours...", CommandeEnCours()),
         ]));
   }
 
