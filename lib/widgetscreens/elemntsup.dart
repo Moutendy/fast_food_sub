@@ -106,3 +106,35 @@ Widget buildCenteredInkWell(
     ),
   );
 }
+
+void showFruitSelectionDialog(
+    BuildContext context,
+    TextEditingController _fruitController,
+    String _selectedFruit,
+    Function(String?)? onchange) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Role User'),
+        content: DropdownButton<String>(
+            items:
+                <String>['client', 'deals', 'delivreded'].map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            onChanged: onchange),
+        // content: DropdownButton<String>(
+        //     value: _selectedFruit,
+        //     items: <String>['Apple', 'Banana', 'Orange', 'Mango']
+        //         .map<DropdownMenuItem<String>>((String value) {
+        //       return
+        //       Null;
+        //     }).toList(),
+        //     onChanged: onchange),
+      );
+    },
+  );
+}

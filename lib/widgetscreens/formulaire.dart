@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
 import 'package:subsafood/widgetscreens/constant.dart';
+import 'package:subsafood/widgetscreens/elemntsup.dart';
 import 'package:subsafood/widgetscreens/icons.dart';
 
 Widget button(String name, Function onPressed) {
@@ -103,6 +104,34 @@ Widget fieldMenu(String name, double s) {
         padding: EdgeInsets.only(left: 0.0),
         child: Center(
           child: title(name, s),
+        ),
+      ),
+    ),
+  );
+}
+
+select(BuildContext context, TextEditingController _fruitController,
+    String _selectedFruit, Function(String?)? onchange) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+    child: Container(
+      decoration: BoxDecoration(
+          color: colorsgrey,
+          border: Border.all(color: white!),
+          borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: EdgeInsets.only(left: 20.0),
+        child: TextFormField(
+          controller: _fruitController,
+          readOnly: true,
+          decoration: InputDecoration(
+            hintText: 'Role User',
+            suffixIcon: Icon(Icons.arrow_drop_down),
+          ),
+          onTap: () {
+            showFruitSelectionDialog(
+                context, _fruitController, _selectedFruit, onchange);
+          },
         ),
       ),
     ),
