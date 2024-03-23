@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:subsafood/main.dart';
+import 'package:subsafood/models/user.dart';
 import 'package:subsafood/screens/auth/register.dart';
 import 'package:subsafood/screens/commandes/commandeproduit.dart';
 import 'package:subsafood/screens/home/homewithoutauthen.dart';
 import 'package:subsafood/screens/orders/orders.dart';
+import 'package:subsafood/services/authservice.dart';
 import 'package:subsafood/widgetscreens/card.dart';
 import 'package:subsafood/widgetscreens/constant.dart';
 import 'package:subsafood/widgetscreens/elemntsup.dart';
@@ -26,6 +28,7 @@ class _LoginBody extends State<LoginBody> {
     TextEditingController emailEditingController = new TextEditingController();
     TextEditingController passwordEditingController =
         new TextEditingController();
+    User user = new User();
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -38,10 +41,10 @@ class _LoginBody extends State<LoginBody> {
           field("Password", true, emailEditingController, "message"),
           SizedBox(height: 20),
           button("Login", () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => MyHomePage(
-                      title: 'SubSaFood',
-                    )));
+            user.email = emailEditingController.text;
+
+            user.password = passwordEditingController.text;
+            login(context, user);
           }),
           SizedBox(height: 20),
           InkWell(

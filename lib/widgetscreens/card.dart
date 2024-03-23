@@ -114,35 +114,26 @@ ContainterFastFood(BuildContext context, int id) {
           padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
           margin: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
           decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/$i.jpg"), fit: BoxFit.fill),
               borderRadius: BorderRadius.circular(15),
               color: Color.fromARGB(255, 250, 250, 250),
               boxShadow: [
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.4),
-                    spreadRadius: 1,
-                    blurRadius: 8)
+                BoxShadow(color: Colors.black, spreadRadius: 1, blurRadius: 8)
               ]),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Container(
-                margin: EdgeInsets.all(1),
-                child: Image.asset(
-                  "images/$i.jpg",
-                  width: 200,
-                  height: 170,
-                  fit: BoxFit.cover,
-                ),
-              ),
               Padding(
                 padding: EdgeInsets.only(bottom: 2),
                 child: Container(
-                  alignment: Alignment.bottomLeft,
+                  alignment: Alignment.bottomCenter,
                   child: Text(
                     "Cheese Burger",
                     style: TextStyle(
                         fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                        color: Colors.black),
+                        fontWeight: FontWeight.bold,
+                        color: white),
                   ),
                 ),
               ),
@@ -154,8 +145,8 @@ ContainterFastFood(BuildContext context, int id) {
                     Text(
                       "323$i,234 dh",
                       style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
                           color: Colors.black),
                     ),
                     InkWell(

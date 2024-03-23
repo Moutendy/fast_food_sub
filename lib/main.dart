@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:subsafood/screens/home/homewithoutauthen.dart';
+import 'package:subsafood/screens/loading.dart';
 import 'package:subsafood/screens/profil/profil.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
 import 'package:subsafood/widgetscreens/elemntsup.dart';
@@ -39,12 +40,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          backgroundColor: backgroundColor,
-          appBar: appBar(context, 'SubSaFood', 'images/3.jpg', Profil()),
-          body: HomeWithOutAuthen(),
-        ));
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Loading());
   }
 }

@@ -59,7 +59,7 @@ class _Register extends State<Register> {
                 user.roleUser?.nameRole = role.text;
 
                 user.password = passwordEditingController.text;
-                register(user);
+                register(context, user);
                 // Navigator.of(context).push(MaterialPageRoute(
                 //     builder: (context) => MyHomePage(
                 //           title: 'SubSaFood',

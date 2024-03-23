@@ -22,3 +22,7 @@ getUser() async {
   user.roleUser?.nameRole = nameRole;
   return user;
 }
+
+delete() async {
+  await storage.deleteAll();
+}
