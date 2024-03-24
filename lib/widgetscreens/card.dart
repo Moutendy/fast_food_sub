@@ -10,6 +10,7 @@ import 'package:subsafood/screens/commandes/commandeproduit.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:subsafood/widgetscreens/constant.dart';
+import 'package:subsafood/widgetscreens/elemntsup.dart';
 import 'package:subsafood/widgetscreens/formulaire.dart';
 import 'package:subsafood/widgetscreens/icons.dart';
 
@@ -127,27 +128,24 @@ ContainterFastFood(BuildContext context, int id) {
               Padding(
                 padding: EdgeInsets.only(bottom: 2),
                 child: Container(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(
-                    "Cheese Burger",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: white),
-                  ),
-                ),
+                    padding: EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(7.0),
+                        color: backgroundColor),
+                    alignment: Alignment.bottomCenter,
+                    child: title("Cheese Burger", 15)),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 2),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      "323$i,234 dh",
-                      style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                    Container(
+                      padding: EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          color: backgroundColor),
+                      child: title("7$i dh", 19),
                     ),
                     InkWell(
                         onTap: () {
@@ -156,11 +154,7 @@ ContainterFastFood(BuildContext context, int id) {
                                     id: i,
                                   )));
                         },
-                        child: Icon(
-                          CupertinoIcons.cart_badge_plus,
-                          size: 25,
-                          color: Colors.black,
-                        ))
+                        child: icon(CupertinoIcons.cart_badge_plus, 25))
                   ],
                 ),
               )
@@ -250,18 +244,38 @@ final List<String> daysOfWeek = [
   'Saturday',
   'Sunday',
 ];
+final List<String> heuresTravail = [
+  '9h00 - 17h00',
+  '9h00 - 17h00',
+  '9h00 - 17h00',
+  '9h00 - 17h00',
+  '9h00 - 17h00',
+  'Fermé',
+  'Fermé',
+];
 horaireFastFood() {
   return Container(
-      child: ListView.builder(
-          itemCount: daysOfWeek.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text(
-                daysOfWeek[index],
-                style: TextStyle(fontSize: 18.0),
+      child: Center(
+    child: ListView.builder(
+        itemCount: daysOfWeek.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+              title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 70),
+              Text(daysOfWeek[index],
+                  style:
+                      TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+              SizedBox(width: 10), // Espacement entre le jour et l'heure
+              Text(
+                heuresTravail[index],
+                style: TextStyle(fontWeight: FontWeight.normal),
               ),
-            );
-          }));
+            ],
+          ));
+        }),
+  ));
 }
 
 produitForProfil(
@@ -374,5 +388,112 @@ deliveredHeadLoging() {
       // Lottie.network(
       //     'https://raw.githubusercontent.com/xvrh/lottie-flutter/master/example/assets/Mobilo/A.json'),
     ],
+  );
+}
+
+cardHorizontal() {
+  return Container(
+    height: 150,
+    margin: EdgeInsets.all(3),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(5),
+      color: white,
+      border: Border.all(width: 1.0, color: Colors.black),
+      boxShadow: [
+        BoxShadow(
+            color: Colors.black54, //New
+            blurRadius: 1.0,
+            offset: Offset(0, 5))
+      ],
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          margin: EdgeInsets.all(3),
+          height: 250,
+          width: 170,
+          decoration: BoxDecoration(
+//border: Border.all(width: 1.0, color: Colors.black),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black54, //New
+                    blurRadius: 1.0,
+                    offset: Offset(0, 5))
+              ],
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: AssetImage('images/3.jpg'),
+                fit: BoxFit.cover,
+              )),
+        ),
+        Container(
+          margin: EdgeInsets.all(3),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Text("Poisson",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  )),
+              SizedBox(
+                height: 4,
+              ),
+              Container(
+                width: 120,
+                height: 100,
+                padding: EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                    // borderRadius: BorderRadius.circular(5),
+                    // border: Border.all(width: 1.0, color: Colors.black)
+                    ),
+                child: Text(
+                  "This is an example This is an example This is an example This is an example This is an example This is an example",
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                  ),
+                  overflow: TextOverflow
+                      .fade, // Définir le comportement en cas de dépassement
+                  maxLines: 8,
+                ),
+              )
+            ],
+          ),
+        ),
+        SizedBox(
+          width: 8,
+        ),
+        Container(
+          margin: EdgeInsets.all(3),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Text("Livré",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  )),
+              SizedBox(
+                height: 10,
+              ),
+              iconValidation(Icons.check_circle, 13, Colors.green),
+              SizedBox(
+                height: 7,
+              ),
+              iconValidation(Icons.cancel, 13, Colors.red),
+              SizedBox(
+                height: 10,
+              ),
+              desc('Prix: 76 dh', 11)
+            ],
+          ),
+        )
+      ],
+    ),
   );
 }

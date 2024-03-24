@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subsafood/screens/profil/profil.dart';
@@ -65,13 +67,13 @@ PreferredSizeWidget appBar(
   );
 }
 
-Widget desc(String desc) {
+Widget desc(String desc,double s) {
   return Text(
     desc,
     style: TextStyle(
-      decoration: TextDecoration.overline,
+      decoration: TextDecoration.none,
       decorationColor: blac12,
-      fontSize: 6,
+      fontSize: s,
       fontWeight: FontWeight.w600,
     ),
     textAlign: TextAlign.center,
@@ -80,7 +82,7 @@ Widget desc(String desc) {
 
 pageView() {
   return PageView(
-    children: const <Widget>[
+    children: <Widget>[
       Center(
         child: Text("Page 1"),
       ),
@@ -107,7 +109,7 @@ Widget buildCenteredInkWell(
   );
 }
 
-void showFruitSelectionDialog(
+void showRoleSelectionDialog(
     BuildContext context,
     TextEditingController _fruitController,
     String _selectedFruit,
@@ -126,14 +128,6 @@ void showFruitSelectionDialog(
               );
             }).toList(),
             onChanged: onchange),
-        // content: DropdownButton<String>(
-        //     value: _selectedFruit,
-        //     items: <String>['Apple', 'Banana', 'Orange', 'Mango']
-        //         .map<DropdownMenuItem<String>>((String value) {
-        //       return
-        //       Null;
-        //     }).toList(),
-        //     onChanged: onchange),
       );
     },
   );

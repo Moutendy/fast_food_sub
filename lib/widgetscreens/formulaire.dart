@@ -129,7 +129,7 @@ select(BuildContext context, TextEditingController _fruitController,
             suffixIcon: Icon(Icons.arrow_drop_down),
           ),
           onTap: () {
-            showFruitSelectionDialog(
+            showRoleSelectionDialog(
                 context, _fruitController, _selectedFruit, onchange);
           },
         ),

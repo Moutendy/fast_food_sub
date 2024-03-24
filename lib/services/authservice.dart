@@ -6,6 +6,7 @@ import 'package:subsafood/screens/auth/login.dart';
 import 'package:subsafood/screens/home/homewithoutauthen.dart';
 import 'package:subsafood/screens/horaire/horaire.dart';
 import 'package:subsafood/screens/livreur/livreur.dart';
+import 'package:subsafood/screens/livreur/orderlivre.dart';
 import 'package:subsafood/screens/orders/commandeencours.dart';
 import 'package:subsafood/screens/produit/produit.dart';
 import 'package:subsafood/screens/produit/produitList.dart';
@@ -122,13 +123,13 @@ Widget switchWidget(BuildContext context, String role) {
           SizedBox(
             height: 15,
           ),
-          buildCenteredInkWell(context, "Ajouter Livreur", Produit()),
+          buildCenteredInkWell(context, "Ajouter Produit", Produit()),
         ],
       );
     case 'delivreded':
       return Column(
         children: [
-          buildCenteredInkWell(context, "Ordder Livreur", Livreur()),
+          buildCenteredInkWell(context, "Ordder Livreur", OrderLivreur()),
           SizedBox(
             height: 15,
           ),

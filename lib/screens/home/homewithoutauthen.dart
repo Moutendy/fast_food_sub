@@ -18,6 +18,7 @@ class _HomeWithOutAuthen extends State<HomeWithOutAuthen> {
     return DefaultTabController(
         length: 4,
         child: Scaffold(
+            backgroundColor: backgroundColor,
             appBar: appBar(context, 'SubSaFood', 'images/3.jpg', Profil()),
             body: Padding(
               padding: EdgeInsets.only(top: 15),

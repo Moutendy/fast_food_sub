@@ -1,26 +1,21 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:subsafood/screens/home/homewithoutauthen.dart';
 import 'package:subsafood/screens/profil/profil.dart';
 import 'package:subsafood/widgetscreens/card.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
 import 'package:subsafood/widgetscreens/elemntsup.dart';
-import 'package:subsafood/widgetscreens/formulaire.dart';
-import 'package:subsafood/widgetscreens/icons.dart';
 
-class ProduitList extends StatefulWidget {
+class OrderLivreur extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _ProduitList();
+  State<StatefulWidget> createState() => _OrderLivreur();
 }
 
-class _ProduitList extends State<ProduitList> {
+class _OrderLivreur extends State<OrderLivreur> {
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
         backgroundColor: backgroundColor,
-        appBar: appBar(
-            context, 'Machandise du vendeure(se)', 'images/3.jpg', Profil()),
+        appBar: appBar(context, 'Order Livreur', 'images/3.jpg', Profil()),
         body: SingleChildScrollView(
             child: Column(children: <Widget>[cardHorizontal()])));
   }

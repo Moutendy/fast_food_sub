@@ -102,7 +102,7 @@ class STabBar extends StatelessWidget {
           SizedBox(
             height: 100,
           ),
-          switchWidget(context, 'deals')
+          switchWidget(context, 'delivreded')
         ]));
   }
 
