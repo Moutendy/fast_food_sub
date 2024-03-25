@@ -94,8 +94,8 @@ redirection(BuildContext context) async {
 
 // }
 
-Widget switchWidget(BuildContext context, String role) {
-  switch (role) {
+Widget switchWidget(BuildContext context, User user) {
+  switch (user.roleUser!.nameRole!) {
     // ignore: constant_pattern_never_matches_value_type
     case 'client':
       return Column(
@@ -111,7 +111,7 @@ Widget switchWidget(BuildContext context, String role) {
     case 'deals':
       return Column(
         children: [
-          buildCenteredInkWell(context, "Produits", ProduitList()),
+          buildCenteredInkWell(context, "Produits", ProduitList(user: user,)),
           SizedBox(
             height: 15,
           ),
@@ -129,7 +129,7 @@ Widget switchWidget(BuildContext context, String role) {
     case 'delivreded':
       return Column(
         children: [
-          buildCenteredInkWell(context, "Ordder Livreur", OrderLivreur()),
+          buildCenteredInkWell(context, "Ordder Livreur", OrderLivreur(user: user,)),
           SizedBox(
             height: 15,
           ),

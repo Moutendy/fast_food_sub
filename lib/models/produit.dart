@@ -1,22 +1,24 @@
 import 'dart:ffi';
+import 'package:subsafood/models/typeproduit.dart';
 import 'package:subsafood/models/user.dart';
 
 class Produit {
   Long? id;
   String? produitName;
-  Double? produitPrice;
+  double? produitPrice;
   String? image;
   User? produitUser;
   String? produitDesc;
-  Double? produitLocalisation;
-
+  double? produitLocalisation;
+  TypeProduit? typeProduit;
   Produit(
       {this.id,
       this.produitPrice,
       this.image,
       this.produitName,
       this.produitUser,
-      this.produitDesc,this.produitLocalisation});
+      this.produitDesc,
+      this.produitLocalisation,this.typeProduit});
 
   factory Produit.fromJson(Map<String, dynamic> json) {
     return Produit(
@@ -25,8 +27,8 @@ class Produit {
         produitPrice: json['produitPrice'],
         image: json['image'],
         produitUser: json['produitUser'],
-        produitDesc:json['produitDesc'],
-        produitLocalisation: json['produitLocalisation']
-        );
+        produitDesc: json['produitDesc'],
+        typeProduit: json['typeProduit'],
+        produitLocalisation: json['produitLocalisation']);
   }
 }

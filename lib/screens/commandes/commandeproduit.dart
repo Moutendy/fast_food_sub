@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:subsafood/models/produit.dart';
 import 'package:subsafood/screens/auth/login.dart';
 import 'package:subsafood/screens/orders/orders.dart';
 import 'package:subsafood/screens/profil/profil.dart';
@@ -9,8 +10,8 @@ import 'package:subsafood/widgetscreens/colors.dart';
 import 'package:subsafood/widgetscreens/formulaire.dart';
 
 class CommandeProduit extends StatefulWidget {
-  int id;
-  CommandeProduit({super.key, required this.id});
+  Produit produit;
+  CommandeProduit({super.key, required this.produit});
 
   @override
   State<StatefulWidget> createState() => _CommandeProduit();
@@ -25,7 +26,7 @@ class _CommandeProduit extends State<CommandeProduit> {
         backgroundColor: backgroundColor,
         actions: [
           Text(
-            "Profil du vendeur(se)",
+            "Nom du vendeur(se): ${widget.produit.produitUser!.name!}",
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
           SizedBox(
@@ -33,11 +34,13 @@ class _CommandeProduit extends State<CommandeProduit> {
           ),
           InkWell(
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Profil()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Profil(
+                          user: widget.produit.produitUser!,
+                        )));
               },
               child: CircleAvatar(
-                backgroundImage: AssetImage("images/3.jpg"),
+                backgroundImage: AssetImage(widget.produit.produitUser!.image!),
               )),
           SizedBox(
             width: 15,
@@ -56,7 +59,7 @@ class _CommandeProduit extends State<CommandeProduit> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Image.asset(
-                  "images/${widget.id}.jpg",
+                  widget.produit.image!,
                   width: 200,
                   height: 200,
                   fit: BoxFit.cover,
@@ -75,7 +78,7 @@ class _CommandeProduit extends State<CommandeProduit> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "SubS & Fast Food",
+                        widget.produit.produitName!,
                         style: TextStyle(
                             color: black54,
                             fontSize: 24,
@@ -124,7 +127,7 @@ class _CommandeProduit extends State<CommandeProduit> {
                 Text(
                     maxLines: 5, // Limite le texte à une seule ligne
                     overflow: TextOverflow.ellipsis,
-                    'Prémière puissance de l’UEMOA, la Côte d’Ivoire est un pays riche pour sa culture, ses icones au football mais aussi pour sa gastronomie . Plusieurs de ces plats ivoiriens ont avec le temps pu se faire une bonne réputation qui va au delà des frontières ivoiriennes : le garba , l’alloco etc . A ces deux plats, nous avons ajouté d’autres recettes pour vous faire decouvrir dans cet article le top 12 des meilleurs plats ivoiriens à tester absolument. Ce classement est le nôtre et la liste pourrait ne pas être exhaustive.'),
+                    widget.produit.produitDesc!),
                 SizedBox(
                   height: 15,
                 ),
@@ -140,7 +143,7 @@ class _CommandeProduit extends State<CommandeProduit> {
                       //   width: 10,
                       // ),
                       Text(
-                        "Prix:100 dh",
+                        "Prix:${widget.produit.produitPrice} dh",
                         style: TextStyle(
                             color: black54,
                             fontSize: 18,

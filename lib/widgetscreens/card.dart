@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intro_screen_onboarding_flutter/introscreenonboarding.dart';
 import 'package:lottie/lottie.dart';
+import 'package:subsafood/constante/constante.dart';
+import 'package:subsafood/models/produit.dart';
 import 'package:subsafood/screens/commandes/commandeproduit.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -104,64 +106,63 @@ Container card(String image, String title, String desc) {
   );
 }
 
-ContainterFastFood(BuildContext context, int id) {
+Widget ContainterFastFood(BuildContext context, List<Produit> produitList) {
   return GridView.count(
     crossAxisCount: 2,
     shrinkWrap: true,
     childAspectRatio: 0.75,
-    children: [
-      for (int i = id; i < 7; i++)
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
-          margin: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/$i.jpg"), fit: BoxFit.fill),
-              borderRadius: BorderRadius.circular(15),
-              color: Color.fromARGB(255, 250, 250, 250),
-              boxShadow: [
-                BoxShadow(color: Colors.black, spreadRadius: 1, blurRadius: 8)
-              ]),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(bottom: 2),
-                child: Container(
+    children: List.generate(produitList.length, (index) {
+      return Container(
+        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
+        margin: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(produitList[index].image!), fit: BoxFit.fill),
+            borderRadius: BorderRadius.circular(15),
+            color: Color.fromARGB(255, 250, 250, 250),
+            boxShadow: [
+              BoxShadow(color: Colors.black, spreadRadius: 1, blurRadius: 8)
+            ]),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 2),
+              child: Container(
+                  padding: EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7.0),
+                      color: backgroundColor),
+                  alignment: Alignment.bottomCenter,
+                  child: title(produitList[index].produitName!, 15)),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 2),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
                     padding: EdgeInsets.all(3),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7.0),
                         color: backgroundColor),
-                    alignment: Alignment.bottomCenter,
-                    child: title("Cheese Burger", 15)),
+                    child: title("${produitList[index].produitPrice} dh", 19),
+                  ),
+                  InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => CommandeProduit(
+                                  produit: produitList[index],
+                                )));
+                      },
+                      child: icon(CupertinoIcons.cart_badge_plus, 25))
+                ],
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 2),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(3),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          color: backgroundColor),
-                      child: title("7$i dh", 19),
-                    ),
-                    InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => CommandeProduit(
-                                    id: i,
-                                  )));
-                        },
-                        child: icon(CupertinoIcons.cart_badge_plus, 25))
-                  ],
-                ),
-              )
-            ],
-          ),
-        )
-    ],
+            )
+          ],
+        ),
+      );
+    }),
   );
 }
 

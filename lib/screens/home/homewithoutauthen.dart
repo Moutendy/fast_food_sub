@@ -1,7 +1,11 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:subsafood/constante/constante.dart';
+import 'package:subsafood/models/produit.dart';
+import 'package:subsafood/models/user.dart';
 import 'package:subsafood/screens/profil/profil.dart';
+import 'package:subsafood/services/localstorage.dart';
 import 'package:subsafood/widgetscreens/card.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
 import 'package:subsafood/widgetscreens/elemntsup.dart';
@@ -16,10 +20,16 @@ class _HomeWithOutAuthen extends State<HomeWithOutAuthen> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return DefaultTabController(
-        length: 4,
+        length: nombreTypesDistincts,
         child: Scaffold(
             backgroundColor: backgroundColor,
-            appBar: appBar(context, 'SubSaFood', 'images/3.jpg', Profil()),
+            appBar: appBar(
+                context,
+                'SubSaFood',
+                'images/3.jpg',
+                Profil(
+                  user: userglo,
+                )),
             body: Padding(
               padding: EdgeInsets.only(top: 15),
               child: Column(
@@ -70,28 +80,16 @@ class _HomeWithOutAuthen extends State<HomeWithOutAuthen> {
                   TabBar(
                       isScrollable: true,
                       labelStyle: TextStyle(fontSize: 20),
-                      tabs: [
-                        Tab(
-                          text: "Burger",
-                        ),
-                        Tab(
-                          text: "Pizza",
-                        ),
-                        Tab(
-                          text: "Tacos",
-                        ),
-                        Tab(
-                          text: "Pasta",
-                        )
-                      ]),
+                      tabs: typesDistincts
+                          .map((type) => Tab(text: type?.name!))
+                          .toList()),
                   Flexible(
                       flex: 1,
-                      child: TabBarView(children: [
-                        ContainterFastFood(context, 1),
-                        ContainterFastFood(context, 3),
-                        ContainterFastFood(context, 5),
-                        ContainterFastFood(context, 6),
-                      ]))
+                      child: TabBarView(
+                          children: typesDistincts.map((type) {
+                        List<Produit> listProduit = produitsParType(type?.name);
+                        return ContainterFastFood(context, listProduit);
+                      }).toList()))
                 ],
               ),
             )));

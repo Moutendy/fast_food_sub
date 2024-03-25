@@ -26,3 +26,5 @@ getUser() async {
 delete() async {
   await storage.deleteAll();
 }
+
+User userLocal = getUser();
