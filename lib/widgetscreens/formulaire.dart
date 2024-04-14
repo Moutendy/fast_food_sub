@@ -92,7 +92,7 @@ Widget alerte(String text, Color color) {
   );
 }
 
-Widget fieldMenu(String name, double s) {
+Widget fieldMenu(String name, double s, IconData iconData) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 25.0),
     child: Container(
@@ -100,11 +100,29 @@ Widget fieldMenu(String name, double s) {
           color: Colors.grey[200],
           border: Border.all(color: Colors.white),
           borderRadius: BorderRadius.circular(10)),
-      child: Padding(
-        padding: EdgeInsets.only(left: 0.0),
-        child: Center(
-          child: title(name, s),
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(150)),
+                color: white),
+            child: icon(iconData, 20),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 0.0),
+            child: Center(
+              child: title(name, s),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 0.0),
+            child: Center(
+              child: Icon(Icons.chevron_right),
+            ),
+          )
+        ],
       ),
     ),
   );

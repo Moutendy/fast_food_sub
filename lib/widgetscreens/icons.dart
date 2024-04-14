@@ -12,8 +12,8 @@ Widget title(String title, double s) {
 Widget icon(IconData icon, double size) {
   return Container(
     padding: EdgeInsets.all(3),
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(7.0), color: backgroundColor),
+    decoration:
+        BoxDecoration(borderRadius: BorderRadius.circular(7.0), color: white),
     child: Icon(
       icon,
       size: size,

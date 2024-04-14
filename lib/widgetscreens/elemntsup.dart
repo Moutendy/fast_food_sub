@@ -45,7 +45,7 @@ Widget messageLink(String name, String nameLink) {
 PreferredSizeWidget appBar(
     BuildContext context, String title, String profil, Profil profilScreen) {
   return AppBar(
-    backgroundColor: backgroundColor,
+    backgroundColor: white,
     actions: [
       Text(title),
       SizedBox(
@@ -67,7 +67,7 @@ PreferredSizeWidget appBar(
   );
 }
 
-Widget desc(String desc,double s) {
+Widget desc(String desc, double s) {
   return Text(
     desc,
     style: TextStyle(
@@ -97,14 +97,14 @@ pageView() {
 }
 
 Widget buildCenteredInkWell(
-    BuildContext context, String text, Widget destinationWidget) {
+    BuildContext context, String text, Widget destinationWidget,IconData iconData) {
   return Center(
     child: InkWell(
       onTap: () {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => destinationWidget));
       },
-      child: fieldMenu(text, 20),
+      child: fieldMenu(text, 20,iconData),
     ),
   );
 }

@@ -18,9 +18,9 @@ class _EditeProfil extends State<EditeProfil> {
     var _imageFile;
     var user;
     return Scaffold(
-        backgroundColor: backgroundColor,
+        backgroundColor: white,
         appBar: AppBar(
-          backgroundColor: backgroundColor,
+          backgroundColor: white,
         ),
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,

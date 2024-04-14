@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:subsafood/models/user.dart';
 import 'package:subsafood/screens/profil/profil.dart';
 import 'package:subsafood/services/localstorage.dart';
 import 'package:subsafood/widgetscreens/card.dart';
@@ -12,18 +13,17 @@ class Horaire extends StatefulWidget {
 
 class _Horaire extends State<Horaire> {
   @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: (userLocal != null)
-          ? appBar(
-              context,
-              'Horaire de Travail',
-              userLocal.image!,
-              Profil(
-                user: userLocal,
-              ))
-          : AppBar(),
+      backgroundColor: white,
+      appBar: AppBar(),
       body: Center(
         child: Container(
           width: 300, // largeur du calendrier

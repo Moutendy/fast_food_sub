@@ -18,7 +18,7 @@ class _OrderLivreur extends State<OrderLivreur> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        backgroundColor: backgroundColor,
+        backgroundColor: white,
         appBar: appBar(context, 'Order Livreur', 'images/3.jpg', Profil(user: widget.user,)),
         body: SingleChildScrollView(
             child: Column(children: <Widget>[cardHorizontal()])));

@@ -15,9 +15,9 @@ class _Orders extends State<Orders> {
     return DefaultTabController(
         length: 4,
         child: Scaffold(
-          backgroundColor: backgroundColor,
+          backgroundColor: white,
           appBar: AppBar(
-            backgroundColor: backgroundColor,
+            backgroundColor: white,
           ),
           body: OrderBody(),
         ));

@@ -28,8 +28,10 @@ class _Profil extends State<Profil> {
         length: 4,
         child: Scaffold(
             resizeToAvoidBottomInset: false,
-            backgroundColor: backgroundColor,
-            appBar: AppBar(),
+            backgroundColor: white,
+            appBar: AppBar(
+              backgroundColor: white,
+            ),
             body: Padding(
                 padding: EdgeInsets.only(top: 3),
                 child: Column(children: [
@@ -103,7 +105,8 @@ class _Profil extends State<Profil> {
                         delete();
                         redirection(context);
                       },
-                      child: fieldMenu("Deconnexion", 15),
+                      child:
+                          fieldMenu("Deconnexion", 15, Icons.output_outlined),
                     ),
                   ),
                   SizedBox(

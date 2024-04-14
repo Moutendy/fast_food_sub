@@ -14,9 +14,9 @@ class _Login extends State<Login> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        backgroundColor: colorsgrey,
+        backgroundColor: white,
         appBar: AppBar(
-          backgroundColor: backgroundColor,
+          backgroundColor: white,
         ),
         body: LoginBody());
   }

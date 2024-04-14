@@ -100,40 +100,40 @@ Widget switchWidget(BuildContext context, User user) {
     case 'client':
       return Column(
         children: [
-          buildCenteredInkWell(context, "Edit Profil", Horaire()),
+          buildCenteredInkWell(context, "Edit Profil", Horaire(),Icons.person),
           SizedBox(
             height: 15,
           ),
           buildCenteredInkWell(
-              context, "Commande en cours...", CommandeEnCours()),
+              context, "Commande en cours...", CommandeEnCours(),Icons.add_shopping_cart_rounded),
         ],
       );
     case 'deals':
       return Column(
         children: [
-          buildCenteredInkWell(context, "Produits", ProduitList(user: user,)),
+          buildCenteredInkWell(context, "Produits", ProduitList(user: user,),Icons.local_mall_rounded),
           SizedBox(
             height: 15,
           ),
-          buildCenteredInkWell(context, "Ajouter Livreur", Livreur()),
+          buildCenteredInkWell(context, "Ajouter Livreur", Livreur(),Icons.motorcycle),
           SizedBox(
             height: 15,
           ),
-          buildCenteredInkWell(context, "Horaire", Horaire()),
+          buildCenteredInkWell(context, "Horaire", Horaire(),Icons.access_alarm),
           SizedBox(
             height: 15,
           ),
-          buildCenteredInkWell(context, "Ajouter Produit", Produit()),
+          buildCenteredInkWell(context, "Ajouter Produit", Produit(),Icons.local_mall_rounded),
         ],
       );
     case 'delivreded':
       return Column(
         children: [
-          buildCenteredInkWell(context, "Ordder Livreur", OrderLivreur(user: user,)),
+          buildCenteredInkWell(context, "Ordder Livreur", OrderLivreur(user: user,),Icons.motorcycle_sharp),
           SizedBox(
             height: 15,
           ),
-          buildCenteredInkWell(context, "Horaire", Horaire()),
+          buildCenteredInkWell(context, "Horaire", Horaire(),Icons.access_alarm),
         ],
       );
     default:

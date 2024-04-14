@@ -19,9 +19,9 @@ class _Produit extends State<Produit> {
     TextEditingController passwordEditingController =
         new TextEditingController();
     return Scaffold(
-        backgroundColor: backgroundColor,
+        backgroundColor: white,
         appBar: AppBar(
-          backgroundColor: backgroundColor,
+          backgroundColor: white,
         ),
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,

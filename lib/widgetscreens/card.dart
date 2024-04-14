@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intro_screen_onboarding_flutter/introscreenonboarding.dart';
 import 'package:lottie/lottie.dart';
 import 'package:subsafood/constante/constante.dart';
@@ -107,63 +108,176 @@ Container card(String image, String title, String desc) {
 }
 
 Widget ContainterFastFood(BuildContext context, List<Produit> produitList) {
-  return GridView.count(
-    crossAxisCount: 2,
-    shrinkWrap: true,
-    childAspectRatio: 0.75,
-    children: List.generate(produitList.length, (index) {
-      return Container(
-        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
-        margin: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(produitList[index].image!), fit: BoxFit.fill),
-            borderRadius: BorderRadius.circular(15),
-            color: Color.fromARGB(255, 250, 250, 250),
-            boxShadow: [
-              BoxShadow(color: Colors.black, spreadRadius: 1, blurRadius: 8)
-            ]),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(bottom: 2),
-              child: Container(
-                  padding: EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7.0),
-                      color: backgroundColor),
-                  alignment: Alignment.bottomCenter,
-                  child: title(produitList[index].produitName!, 15)),
+  return SingleChildScrollView(
+    padding: EdgeInsets.all(12),
+    child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Container(
+            child: Column(
+              children: List.generate(
+                  produitList.length,
+                  (index) => ClipRRect(
+                          child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(13))),
+                        padding: EdgeInsets.all(6),
+                        margin: EdgeInsets.all(6),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 250, 250, 250),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black,
+                                        spreadRadius: 1,
+                                        blurRadius: 8)
+                                  ],
+                                  image: DecorationImage(
+                                      image:
+                                          AssetImage(produitList[index].image!),
+                                      fit: BoxFit.cover)),
+                              child: Text(''),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                                child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(produitList[index].produitName!,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: GoogleFonts.lato(
+                                      textStyle: TextStyle(
+                                          letterSpacing: .5,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold),
+                                    )),
+                                // Text(
+                                //     pharmacieList[index].ville! +
+                                //         '/' +
+                                //         pharmacieList[index].quartie!,
+                                //     style: GoogleFonts.aDLaMDisplay(
+                                //         textStyle: TextStyle(
+                                //       fontSize: 11,
+                                //     ))),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.orange[100],
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(4))),
+                                  child: Text(
+                                      '${produitList[index].produitPrice!}',
+                                      style: GoogleFonts.aDLaMDisplay(
+                                          textStyle: TextStyle(
+                                        fontSize: 10,
+                                        color: Colors.orange,
+                                      ))),
+                                )
+                              ],
+                            )),
+                            SizedBox(
+                              width: 1,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(1),
+                              child: Center(
+                                  child: ElevatedButton.icon(
+                                style: ButtonStyle(),
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => CommandeProduit(
+                                            produit: produitList[index],
+                                          )));
+                                },
+                                label: Text('buy'),
+                                icon: icon(CupertinoIcons.cart_badge_plus, 25),
+                              )),
+                            ),
+                          ],
+                        ),
+                      ))),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 2),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7.0),
-                        color: backgroundColor),
-                    child: title("${produitList[index].produitPrice} dh", 19),
-                  ),
-                  InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => CommandeProduit(
-                                  produit: produitList[index],
-                                )));
-                      },
-                      child: icon(CupertinoIcons.cart_badge_plus, 25))
-                ],
-              ),
-            )
-          ],
-        ),
-      );
-    }),
+          )
+        ]),
   );
+  ;
+  // return GridView.count(
+  //   crossAxisCount: 1,
+  //   shrinkWrap: true,
+  //   childAspectRatio: 0.75,
+
+  //   children: List.generate(produitList.length, (index) {
+  //     return Container(
+  //       width: 100,
+  //       height: 50,
+  //       decoration: BoxDecoration(
+  //         color: Colors.amberAccent,
+  //         border: Border.all(color: Colors.grey),
+  //       ),
+  //     );
+  // return Container(
+  //   // padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
+  //   // margin: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
+  //   // decoration: BoxDecoration(
+  //   //     image: DecorationImage(
+  //   //         image: AssetImage(produitList[index].image!), fit: BoxFit.fill),
+  //   //     borderRadius: BorderRadius.circular(15),
+  //   //     color: Color.fromARGB(255, 250, 250, 250),
+  //   //     boxShadow: [
+  //   //       BoxShadow(color: Colors.black, spreadRadius: 1, blurRadius: 8)
+  //   //     ]),
+  //   child: Row(
+  //     mainAxisAlignment: MainAxisAlignment.end,
+  //     children: [
+  //       Padding(
+  //         padding: EdgeInsets.only(bottom: 2),
+  //         child: Container(
+  //             padding: EdgeInsets.all(3),
+  //             decoration: BoxDecoration(
+  //                 borderRadius: BorderRadius.circular(7.0),
+  //                 color: backgroundColor),
+  //             alignment: Alignment.bottomCenter,
+  //             child: title(produitList[index].produitName!, 15)),
+  //       ),
+  //       Padding(
+  //         padding: EdgeInsets.symmetric(vertical: 2),
+  //         child: Row(
+  //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //           children: [
+  //             Container(
+  //               padding: EdgeInsets.all(3),
+  //               decoration: BoxDecoration(
+  //                   borderRadius: BorderRadius.circular(7.0),
+  //                   color: backgroundColor),
+  //               child: title("${produitList[index].produitPrice} dh", 19),
+  //             ),
+  //             InkWell(
+  //                 onTap: () {
+  //                   Navigator.of(context).push(MaterialPageRoute(
+  //                       builder: (context) => CommandeProduit(
+  //                             produit: produitList[index],
+  //                           )));
+  //                 },
+  //                 child: icon(CupertinoIcons.cart_badge_plus, 25))
+  //           ],
+  //         ),
+  //       )
+  //     ],
+  //   ),
+  // );
+  //   }),
+  // );
 }
 
 ProfilEditFastFood(String name, bool pass,
@@ -395,11 +509,11 @@ deliveredHeadLoging() {
 cardHorizontal() {
   return Container(
     height: 150,
-    margin: EdgeInsets.all(3),
+    margin: EdgeInsets.all(4),
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(5),
+      borderRadius: BorderRadius.circular(20),
       color: white,
-      border: Border.all(width: 1.0, color: Colors.black),
+      border: Border.all(width: 1.0, color: Colors.black12),
       boxShadow: [
         BoxShadow(
             color: Colors.black54, //New
@@ -412,8 +526,8 @@ cardHorizontal() {
       children: [
         Container(
           margin: EdgeInsets.all(3),
-          height: 250,
-          width: 170,
+          height: 100,
+          width: 100,
           decoration: BoxDecoration(
 //border: Border.all(width: 1.0, color: Colors.black),
               boxShadow: [
@@ -422,7 +536,7 @@ cardHorizontal() {
                     blurRadius: 1.0,
                     offset: Offset(0, 5))
               ],
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(100),
               image: DecorationImage(
                 image: AssetImage('images/3.jpg'),
                 fit: BoxFit.cover,
@@ -452,13 +566,15 @@ cardHorizontal() {
                     ),
                 child: Text(
                   "This is an example This is an example This is an example This is an example This is an example This is an example",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.lato(
+                    textStyle: TextStyle(
+                        letterSpacing: .5,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold),
                   ),
-                  overflow: TextOverflow
-                      .fade, // Définir le comportement en cas de dépassement
+
+                  // Définir le comportement en cas de dépassement
                   maxLines: 8,
                 ),
               )
@@ -475,7 +591,7 @@ cardHorizontal() {
               SizedBox(
                 height: 10,
               ),
-              Text("Livré",
+              Text("Disponibilité",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   )),

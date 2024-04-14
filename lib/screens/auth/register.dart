@@ -29,9 +29,9 @@ class _Register extends State<Register> {
     // TextEditingController passwordEditingController =
     //     new TextEditingController();
     return Scaffold(
-        backgroundColor: colorsgrey,
+        backgroundColor: white,
         appBar: AppBar(
-          backgroundColor: backgroundColor,
+          backgroundColor: white,
         ),
         body: SingleChildScrollView(
           child: Column(

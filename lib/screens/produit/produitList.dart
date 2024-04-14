@@ -13,7 +13,7 @@ import 'package:subsafood/widgetscreens/icons.dart';
 class ProduitList extends StatefulWidget {
   User user;
 
-  ProduitList({super.key,required this.user});
+  ProduitList({super.key, required this.user});
   @override
   State<StatefulWidget> createState() => _ProduitList();
 }
@@ -22,9 +22,14 @@ class _ProduitList extends State<ProduitList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: backgroundColor,
+        backgroundColor: white,
         appBar: appBar(
-            context, 'Machandise du vendeure(se)', widget.user.image!, Profil(user: widget.user,)),
+            context,
+            'Machandise du vendeure(se)',
+            widget.user.image!,
+            Profil(
+              user: widget.user,
+            )),
         body: SingleChildScrollView(
             child: Column(children: <Widget>[cardHorizontal()])));
   }

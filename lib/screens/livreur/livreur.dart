@@ -13,9 +13,9 @@ class _Livreur extends State<Livreur> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: backgroundColor,
+        backgroundColor: white,
         appBar: AppBar(
-          backgroundColor: backgroundColor,
+          backgroundColor: white,
         ),
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
