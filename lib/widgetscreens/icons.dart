@@ -24,8 +24,8 @@ Widget icon(IconData icon, double size) {
 Widget iconValidation(IconData icon, double size, Color col) {
   return Container(
     padding: EdgeInsets.all(3),
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(7.0), color: backgroundColor),
+    // decoration: BoxDecoration(
+    //     borderRadius: BorderRadius.circular(7.0) ),
     child: Icon(
       icon,
       size: size,

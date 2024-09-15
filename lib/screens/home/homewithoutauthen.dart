@@ -24,7 +24,6 @@ class _HomeWithOutAuthen extends State<HomeWithOutAuthen> {
         child: Scaffold(
             backgroundColor: white,
             appBar: appBar(
-             
                 context,
                 'SubSaFood',
                 'images/3.jpg',
@@ -58,7 +57,7 @@ class _HomeWithOutAuthen extends State<HomeWithOutAuthen> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
-                      'SubS & Fast Food',
+                      'SubS & FastFood',
                       style: TextStyle(
                           color: black54,
                           fontSize: 24,
@@ -71,7 +70,7 @@ class _HomeWithOutAuthen extends State<HomeWithOutAuthen> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
-                      'Delivied on time',
+                      'Menu',
                       style: TextStyle(
                           color: black54,
                           fontSize: 14,
@@ -82,13 +81,13 @@ class _HomeWithOutAuthen extends State<HomeWithOutAuthen> {
                       isScrollable: true,
                       labelStyle: TextStyle(fontSize: 20),
                       tabs: typesDistincts
-                          .map((type) => Tab(text: type?.name!))
+                          .map((type) => Tab(text: type))
                           .toList()),
                   Flexible(
                       flex: 1,
                       child: TabBarView(
                           children: typesDistincts.map((type) {
-                        List<Produit> listProduit = produitsParType(type?.name);
+                        List<Produit> listProduit = produitsParType(type);
                         return ContainterFastFood(context, listProduit);
                       }).toList()))
                 ],

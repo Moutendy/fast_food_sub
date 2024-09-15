@@ -56,7 +56,7 @@ class _Register extends State<Register> {
 
                 user.email = emailEditingController.text;
                 user.tel = telEditingController.text;
-                user.roleUser?.nameRole = role.text;
+                user.roleUser = role.text;
 
                 user.password = passwordEditingController.text;
                 register(context, user);

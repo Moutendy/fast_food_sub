@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import 'package:subsafood/models/typeproduit.dart';
+import 'package:subsafood/constante/enum/typeproduit.dart';
 import 'package:subsafood/models/user.dart';
 
 class Produit {
@@ -10,7 +10,7 @@ class Produit {
   User? produitUser;
   String? produitDesc;
   double? produitLocalisation;
-  TypeProduit? typeProduit;
+  String? typeProduit;
   Produit(
       {this.id,
       this.produitPrice,

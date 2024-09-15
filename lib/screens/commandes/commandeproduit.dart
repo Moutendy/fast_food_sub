@@ -1,15 +1,11 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:subsafood/models/produit.dart';
-import 'package:subsafood/screens/auth/login.dart';
 import 'package:subsafood/screens/orders/orders.dart';
 import 'package:subsafood/screens/profil/profil.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
-import 'package:subsafood/widgetscreens/formulaire.dart';
 
 class CommandeProduit extends StatefulWidget {
   Produit produit;
@@ -20,6 +16,27 @@ class CommandeProduit extends StatefulWidget {
 }
 
 class _CommandeProduit extends State<CommandeProduit> {
+  bool like = true;
+  int nbLike = 12;
+  int nbOnder = 1;
+
+  likeAndDislike() {
+    like = !like;
+    if (like) {
+      nbLike++;
+    } else {
+      nbLike--;
+    }
+  }
+
+  nmbOrderAdd() {
+    nbOnder++;
+  }
+
+  nmbOrderRemove() {
+    nbOnder--;
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -76,8 +93,42 @@ class _CommandeProduit extends State<CommandeProduit> {
                                 backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15))),
-                            onPressed: () {},
-                            icon: Icon(Icons.favorite)),
+                            onPressed: () {
+                              likeAndDislike();
+                              setState(() {});
+                            },
+                            icon: (like)
+                                ? Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                  )
+                                : Icon(
+                                    Icons.favorite,
+                                    color: Colors.black,
+                                  )),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black54, //New
+                                  blurRadius: 10.0,
+                                  offset: Offset(0, 10))
+                            ],
+                          ),
+                          padding: EdgeInsets.all(1),
+                          child: Center(
+                            child: Text(
+                              "${nbLike}",
+                              style: GoogleFonts.aDLaMDisplay(
+                                fontSize: 11,
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     )),
                 Positioned(
@@ -112,22 +163,7 @@ class _CommandeProduit extends State<CommandeProduit> {
                 ],
               ),
             ),
-            // Container(
-            //   child: Row(
-            //     children: [
-            //       Container(
-            //         padding: EdgeInsets.only(left: 12),
-            //         child: Text(
-            //           '${widget.produit.produitPrice!}',
-            //           textAlign: TextAlign.left,
-            //           style: GoogleFonts.aDLaMDisplay(
-            //             fontSize: 16,
-            //           ),
-            //         ),
-            //       )
-            //     ],
-            //   ),
-            // ),
+
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -246,9 +282,63 @@ class _CommandeProduit extends State<CommandeProduit> {
                               fontSize: 11,
                             ))),
                   ),
-                  SizedBox(
-                    width: 10,
+                  Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black54, //New
+                              blurRadius: 10.0,
+                              offset: Offset(0, 10))
+                        ],
+                      ),
+                      child: Center(
+                        child: IconButton(
+                          onPressed: () {
+                            nmbOrderAdd();
+                            setState(() {});
+                          },
+                          icon: Icon(
+                            Icons.add,
+                            size: 20,
+                          ),
+                        ),
+                      )),
+                  Text(
+                    "${nbOnder}",
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.abel(
+                      fontSize: 16,
+                    ),
                   ),
+                  Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black54, //New
+                              blurRadius: 10.0,
+                              offset: Offset(0, 10))
+                        ],
+                      ),
+                      child: Center(
+                        child: IconButton(
+                          onPressed: () {
+                            nmbOrderRemove();
+                            setState(() {});
+                          },
+                          icon: Icon(
+                            Icons.remove,
+                            size: 20,
+                          ),
+                        ),
+                      )),
                   Container(
                     padding: EdgeInsets.all(12),
                     child: ElevatedButton.icon(
@@ -264,10 +354,9 @@ class _CommandeProduit extends State<CommandeProduit> {
                               builder: (context) => Orders()));
                         },
                         icon: Icon(CupertinoIcons.cart_badge_plus),
-                        label: Text("Acheter",
-                            style: GoogleFonts.aDLaMDisplay(
-                              fontSize: 11,
-                            ))),
+                        label: Text(
+                          "",
+                        )),
                   ),
                 ],
               ),

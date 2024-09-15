@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:subsafood/screens/profil/profil.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
 import 'package:subsafood/widgetscreens/formulaire.dart';
@@ -11,13 +11,7 @@ Widget dialogue(String title, String desc) {
       child: ElevatedButton(
     child: Text(title),
     onPressed: () {
-      Get.defaultDialog(
-        title: title,
-        middleText: desc,
-        backgroundColor: red,
-        titleStyle: TextStyle(color: white),
-        middleTextStyle: TextStyle(color: white),
-      );
+    
     },
   ));
 }

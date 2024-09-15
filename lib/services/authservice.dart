@@ -95,7 +95,7 @@ redirection(BuildContext context) async {
 // }
 
 Widget switchWidget(BuildContext context, User user) {
-  switch (user.roleUser!.nameRole!) {
+  switch (user.roleUser!) {
     // ignore: constant_pattern_never_matches_value_type
     case 'client':
       return Column(

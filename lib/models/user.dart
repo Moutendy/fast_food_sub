@@ -5,7 +5,7 @@ class User {
   String? name;
   String? email;
   String? image;
-  Role? roleUser;
+  String? roleUser;
   String? tel;
   String? password;
   User({this.id,this.email,this.image,this.name,this.roleUser,this.tel,this.password});
