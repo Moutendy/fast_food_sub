@@ -9,7 +9,7 @@ addUser(User user) async {
 // Write value
   await storage.write(key: "email", value: user.email);
   await storage.write(key: "name", value: user.name);
-  await storage.write(key: "nameRole", value: user.roleUser?.nameRole);
+  await storage.write(key: "nameRole", value: user.roleUser);
 }
 
 getUser() async {
@@ -20,7 +20,7 @@ getUser() async {
   String? nameRole = await storage.read(key: "nameRole");
   user.email = email;
   user.name = name;
-  user.roleUser?.nameRole = nameRole;
+  user.roleUser = nameRole;
   return user;
 }
 

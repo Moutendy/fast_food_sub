@@ -28,7 +28,7 @@ class _HomeWithOutAuthen extends State<HomeWithOutAuthen> {
                 'SubSaFood',
                 'images/3.jpg',
                 Profil(
-                  user: userglo,
+                  user: user,
                 )),
             body: Padding(
               padding: EdgeInsets.only(top: 15),

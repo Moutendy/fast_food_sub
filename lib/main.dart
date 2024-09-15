@@ -40,6 +40,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Loading());
+    return MaterialApp(
+        debugShowCheckedModeBanner: false, home: HomeWithOutAuthen());
   }
 }

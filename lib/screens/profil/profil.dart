@@ -2,13 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:subsafood/models/user.dart';
-import 'package:subsafood/screens/home/homewithoutauthen.dart';
-import 'package:subsafood/screens/profil/profilbody.dart';
 import 'package:subsafood/services/authservice.dart';
 import 'package:subsafood/services/localstorage.dart';
-import 'package:subsafood/widgetscreens/card.dart';
 import 'package:subsafood/widgetscreens/colors.dart';
-import 'package:subsafood/widgetscreens/elemntsup.dart';
 import 'package:subsafood/widgetscreens/formulaire.dart';
 
 class Profil extends StatefulWidget {
@@ -99,6 +95,35 @@ class _Profil extends State<Profil> {
                   SizedBox(
                     height: 15,
                   ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 1),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Email: ',
+                          style: TextStyle(
+                              color: black54,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          widget.user.email!,
+                          style: TextStyle(
+                              color: black54,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  switchWidget(context, widget.user),
+                  SizedBox(
+                    height: 100,
+                  ),
                   Center(
                     child: InkWell(
                       onTap: () {
@@ -109,10 +134,6 @@ class _Profil extends State<Profil> {
                           fieldMenu("Deconnexion", 15, Icons.output_outlined),
                     ),
                   ),
-                  SizedBox(
-                    height: 100,
-                  ),
-                  switchWidget(context, widget.user)
                 ]))));
   }
 }

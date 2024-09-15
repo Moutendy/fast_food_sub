@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:subsafood/main.dart';
-
 import 'package:subsafood/models/user.dart';
 import 'package:subsafood/screens/auth/login.dart';
 import 'package:subsafood/screens/home/homewithoutauthen.dart';
 import 'package:subsafood/screens/horaire/horaire.dart';
 import 'package:subsafood/screens/livreur/livreur.dart';
 import 'package:subsafood/screens/livreur/orderlivre.dart';
-import 'package:subsafood/screens/orders/commandeencours.dart';
+import 'package:subsafood/screens/orders/commandehistorique.dart';
+import 'package:subsafood/screens/orders/orders.dart';
 import 'package:subsafood/screens/produit/produit.dart';
 import 'package:subsafood/screens/produit/produitList.dart';
-import 'package:subsafood/services/enum.dart';
+import 'package:subsafood/screens/profil/editprofil.dart';
 import 'package:subsafood/services/localstorage.dart';
 import 'package:subsafood/widgetscreens/elemntsup.dart';
 
@@ -97,43 +96,65 @@ redirection(BuildContext context) async {
 Widget switchWidget(BuildContext context, User user) {
   switch (user.roleUser!) {
     // ignore: constant_pattern_never_matches_value_type
-    case 'client':
+    case 'USER':
       return Column(
         children: [
-          buildCenteredInkWell(context, "Edit Profil", Horaire(),Icons.person),
+          buildCenteredInkWell(
+              context, "Edit Profil", EditeProfil(), Icons.person),
+          SizedBox(
+            height: 15,
+          ),
+          buildCenteredInkWell(context, "Commande en cours...", Orders(),
+              Icons.add_shopping_cart_rounded),
+          SizedBox(
+            height: 15,
+          ),
+          buildCenteredInkWell(context, "Historique Commande...",
+              CommandeHistorique(), Icons.history_edu_outlined),
+        ],
+      );
+    case 'SELLER':
+      return Column(
+        children: [
+          buildCenteredInkWell(
+              context,
+              "Produits",
+              ProduitList(
+                user: user,
+              ),
+              Icons.local_mall_rounded),
           SizedBox(
             height: 15,
           ),
           buildCenteredInkWell(
-              context, "Commande en cours...", CommandeEnCours(),Icons.add_shopping_cart_rounded),
+              context, "Ajouter Livreur", Livreur(), Icons.motorcycle),
+          SizedBox(
+            height: 15,
+          ),
+          buildCenteredInkWell(
+              context, "Horaire", Horaire(), Icons.access_alarm),
+          SizedBox(
+            height: 15,
+          ),
+          buildCenteredInkWell(
+              context, "Ajouter Produit", Produit(), Icons.local_mall_rounded),
         ],
       );
-    case 'deals':
+    case "DELIVERY":
       return Column(
         children: [
-          buildCenteredInkWell(context, "Produits", ProduitList(user: user,),Icons.local_mall_rounded),
+          buildCenteredInkWell(
+              context,
+              "Ordder Livreur",
+              OrderLivreur(
+                user: user,
+              ),
+              Icons.motorcycle_sharp),
           SizedBox(
             height: 15,
           ),
-          buildCenteredInkWell(context, "Ajouter Livreur", Livreur(),Icons.motorcycle),
-          SizedBox(
-            height: 15,
-          ),
-          buildCenteredInkWell(context, "Horaire", Horaire(),Icons.access_alarm),
-          SizedBox(
-            height: 15,
-          ),
-          buildCenteredInkWell(context, "Ajouter Produit", Produit(),Icons.local_mall_rounded),
-        ],
-      );
-    case 'delivreded':
-      return Column(
-        children: [
-          buildCenteredInkWell(context, "Ordder Livreur", OrderLivreur(user: user,),Icons.motorcycle_sharp),
-          SizedBox(
-            height: 15,
-          ),
-          buildCenteredInkWell(context, "Horaire", Horaire(),Icons.access_alarm),
+          buildCenteredInkWell(
+              context, "Horaire", Horaire(), Icons.access_alarm),
         ],
       );
     default:

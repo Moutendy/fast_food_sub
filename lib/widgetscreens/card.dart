@@ -163,21 +163,13 @@ Widget ContainterFastFood(BuildContext context, List<Produit> produitList) {
                                           fontSize: 13,
                                           fontWeight: FontWeight.bold),
                                     )),
-                                // Text(
-                                //     pharmacieList[index].ville! +
-                                //         '/' +
-                                //         pharmacieList[index].quartie!,
-                                //     style: GoogleFonts.aDLaMDisplay(
-                                //         textStyle: TextStyle(
-                                //       fontSize: 11,
-                                //     ))),
                                 Container(
                                   decoration: BoxDecoration(
                                       color: Colors.orange[100],
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(4))),
                                   child: Text(
-                                      '${produitList[index].produitPrice!}',
+                                      '${produitList[index].produitPrice!} dh',
                                       style: GoogleFonts.aDLaMDisplay(
                                           textStyle: TextStyle(
                                         fontSize: 10,
@@ -211,73 +203,6 @@ Widget ContainterFastFood(BuildContext context, List<Produit> produitList) {
           )
         ]),
   );
-  ;
-  // return GridView.count(
-  //   crossAxisCount: 1,
-  //   shrinkWrap: true,
-  //   childAspectRatio: 0.75,
-
-  //   children: List.generate(produitList.length, (index) {
-  //     return Container(
-  //       width: 100,
-  //       height: 50,
-  //       decoration: BoxDecoration(
-  //         color: Colors.amberAccent,
-  //         border: Border.all(color: Colors.grey),
-  //       ),
-  //     );
-  // return Container(
-  //   // padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
-  //   // margin: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
-  //   // decoration: BoxDecoration(
-  //   //     image: DecorationImage(
-  //   //         image: AssetImage(produitList[index].image!), fit: BoxFit.fill),
-  //   //     borderRadius: BorderRadius.circular(15),
-  //   //     color: Color.fromARGB(255, 250, 250, 250),
-  //   //     boxShadow: [
-  //   //       BoxShadow(color: Colors.black, spreadRadius: 1, blurRadius: 8)
-  //   //     ]),
-  //   child: Row(
-  //     mainAxisAlignment: MainAxisAlignment.end,
-  //     children: [
-  //       Padding(
-  //         padding: EdgeInsets.only(bottom: 2),
-  //         child: Container(
-  //             padding: EdgeInsets.all(3),
-  //             decoration: BoxDecoration(
-  //                 borderRadius: BorderRadius.circular(7.0),
-  //                 color: backgroundColor),
-  //             alignment: Alignment.bottomCenter,
-  //             child: title(produitList[index].produitName!, 15)),
-  //       ),
-  //       Padding(
-  //         padding: EdgeInsets.symmetric(vertical: 2),
-  //         child: Row(
-  //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-  //           children: [
-  //             Container(
-  //               padding: EdgeInsets.all(3),
-  //               decoration: BoxDecoration(
-  //                   borderRadius: BorderRadius.circular(7.0),
-  //                   color: backgroundColor),
-  //               child: title("${produitList[index].produitPrice} dh", 19),
-  //             ),
-  //             InkWell(
-  //                 onTap: () {
-  //                   Navigator.of(context).push(MaterialPageRoute(
-  //                       builder: (context) => CommandeProduit(
-  //                             produit: produitList[index],
-  //                           )));
-  //                 },
-  //                 child: icon(CupertinoIcons.cart_badge_plus, 25))
-  //           ],
-  //         ),
-  //       )
-  //     ],
-  //   ),
-  // );
-  //   }),
-  // );
 }
 
 ProfilEditFastFood(String name, bool pass,
@@ -298,28 +223,174 @@ ProfilEditFastFood(String name, bool pass,
 }
 
 ContainterPending(String message) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      SizedBox(
-        height: 100,
+  return SingleChildScrollView(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+    Container(
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.all(12),
+            height: 200,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 60,
+                  backgroundImage: AssetImage("images/3.jpg"),
+                ),
+                Container(
+                  padding: EdgeInsets.all(30),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Livreur",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Roboto Mono sample',
+                              fontSize: 15,
+                              color: Colors.black)),
+                      Text("Patienter la validation",
+                          textAlign: TextAlign.left,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(color: Colors.greenAccent)),
+                      Flexible(
+                        child: Text('Aug 26,2024|12:48',
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 15,
+                                color: Colors.black)),
+                      ),
+                      Expanded(
+                          child: Container(
+                              child: Text("ORDER ID : RBSDEYTR",
+                                  textAlign: TextAlign.left,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(color: Colors.black26)))),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.black26, // Couleur de la ligne
+            thickness: 1, // Épaisseur de la ligne
+            indent: 20, // Décalage du début de la ligne
+            endIndent: 20, // Décalage de la fin de la ligne
+          ),
+          Container(
+            padding: EdgeInsets.all(12),
+            height: 200,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(30),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Votre Commande",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Roboto Mono sample',
+                              fontSize: 20,
+                              color: Colors.black)),
+                      Text("FastFoodSalie",
+                          textAlign: TextAlign.left,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(color: Colors.greenAccent)),
+                      Flexible(
+                        child: Text('Viande Poisson',
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 15,
+                                color: Colors.black)),
+                      ),
+                      Expanded(
+                          child: Container(
+                              child: Text("ORANGE et FANTA",
+                                  textAlign: TextAlign.left,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(color: Colors.black26)))),
+                      Expanded(
+                          child: Container(
+                              child: Text("Rabat et Salé",
+                                  textAlign: TextAlign.left,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(color: Colors.black26)))),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 40,
+                ),
+                Center(
+                  child: Text("74,00 MAD",
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 15,
+                          color: Colors.black)),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.black26, // Couleur de la ligne
+            thickness: 1, // Épaisseur de la ligne
+            indent: 20, // Décalage du début de la ligne
+            endIndent: 20, // Décalage de la fin de la ligne
+          ),
+          Container(
+            padding: EdgeInsets.all(12),
+            height: 200,
+            child: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(30),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Détail du Livreur",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Roboto Mono sample',
+                              fontSize: 20,
+                              color: Colors.black)),
+                      Text("Marc jean",
+                          textAlign: TextAlign.left,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(color: Colors.greenAccent)),
+                      Flexible(
+                        child: Text('tel: 060986780',
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 15,
+                                color: Colors.black)),
+                      ),
+                      Expanded(
+                          child: Container(
+                              child: Text("ORANGE et FANTA",
+                                  textAlign: TextAlign.left,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(color: Colors.black26)))),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          button("En attend de validatin", () {}),
+        ],
       ),
-      Container(
-        child: Text(message),
-      ),
-      SizedBox(
-        height: 100,
-      ),
-      Center(
-        child: CircularProgressIndicator(
-          backgroundColor: blac12,
-          strokeAlign: 10,
-          strokeWidth: 15,
-          strokeCap: StrokeCap.square,
-        ),
-      )
-    ],
-  );
+    ),
+  ]));
 }
 
 ConfirmationFastFood() {

@@ -45,7 +45,7 @@ class _CommandeProduit extends State<CommandeProduit> {
         backgroundColor: white,
         actions: [
           Text(
-            "Nom du vendeur(se): ${widget.produit.produitUser!.name!}",
+            "${widget.produit.produitUser!.name!}",
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
           SizedBox(
@@ -247,22 +247,7 @@ class _CommandeProduit extends State<CommandeProduit> {
                 ),
               ),
             ),
-            // Row(
-            //   crossAxisAlignment: CrossAxisAlignment.start,
-            //   children: [
-            //     Container(
-            //       padding: EdgeInsets.only(left: 12),
-            //       child: Text(
-            //         'Description :',
-            //         textAlign: TextAlign.left,
-            //         style: GoogleFonts.aDLaMDisplay(
-            //           fontSize: 11,
-            //         ),
-            //       ),
-            //     ),
-
-            //   ],
-            // ),
+          
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -271,10 +256,7 @@ class _CommandeProduit extends State<CommandeProduit> {
                     padding: EdgeInsets.all(12),
                     child: ElevatedButton.icon(
                         onPressed: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (context) => Orders())
-
-                          // );
+                          
                         },
                         icon: Icon(CupertinoIcons.location_solid),
                         label: Text("Localisation",
@@ -298,11 +280,11 @@ class _CommandeProduit extends State<CommandeProduit> {
                       child: Center(
                         child: IconButton(
                           onPressed: () {
-                            nmbOrderAdd();
+                            nmbOrderRemove();
                             setState(() {});
                           },
                           icon: Icon(
-                            Icons.add,
+                            Icons.remove,
                             size: 20,
                           ),
                         ),
@@ -330,11 +312,11 @@ class _CommandeProduit extends State<CommandeProduit> {
                       child: Center(
                         child: IconButton(
                           onPressed: () {
-                            nmbOrderRemove();
+                            nmbOrderAdd();
                             setState(() {});
                           },
                           icon: Icon(
-                            Icons.remove,
+                            Icons.add,
                             size: 20,
                           ),
                         ),
